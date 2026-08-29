@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Danil Gherbali</title>
 <meta name="description" content="Fashion content production in Paris & Milan by Danil Gherbali. You send the clothes. We do the rest. Photography, Reels and campaign content for fashion brands.">
 <meta property="og:title" content="Danil Gherbali — Fashion Content Production, Paris & Milan">
@@ -15,8 +15,10 @@
     --mono:'IBM Plex Mono', 'Courier New', monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;overflow-x:hidden}
+  html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100vw}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;overflow-x:hidden;width:100%;max-width:100vw;position:relative;-webkit-text-size-adjust:100%}
+  img,video,iframe,canvas,svg{max-width:100%;height:auto}
+  input,select,textarea{font-size:16px!important}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--red);color:#fff}
@@ -324,7 +326,9 @@
     .pstep p{grid-column:1/-1;padding:0 4vw 30px}
   }
   @media(max-width:720px){
-    .hero h1{font-size:min(11.5vw,150px)}
+    .hero h1{font-size:min(11.5vw,150px);word-break:break-word}
+    .hero-meta{gap:16px}
+    .hero-meta .block{width:100%}
     .intro h2{font-size:min(8.4vw,96px);max-width:none}
     .fw h2{font-size:min(10vw,138px)}
     .work h2,.services h2,.process h2,.faq h2,.map h2{font-size:min(10.4vw,110px)}
@@ -334,20 +338,36 @@
     .no3{grid-template-columns:1fr;width:100%}
     .no3 div{border-right:none;border-bottom:1px solid var(--ink)}
     .no3 div:last-child{border-bottom:none}
+    .deliv .dgrid{grid-template-columns:1fr}
+    .deliv .cell{border-right:none;border-bottom:1px solid var(--ink);padding:30px 6vw}
+    .deliv .cell:last-child{border-bottom:none}
+    .photog .meta{grid-template-columns:1fr;width:100%;border:1px solid #444}
+    .photog .meta div{border-right:none;border-bottom:1px solid #444;padding:12px 16px}
+    .photog .meta div:last-child{border-bottom:none}
+    .f2{grid-template-columns:1fr;gap:0}
+    .who ul{columns:1}
+    .pipe-row{flex-direction:column;width:100%;max-width:100%}
+    .pipe-row .step{border-right:none;border-bottom:1px solid var(--ink);padding:18px 20px}
+    .pipe-row .ar{display:none}
+    .pstep{grid-template-columns:1fr;padding:0}
+    .pstep .num{padding:20px 6vw 0;font-size:36px}
+    .pstep h3{padding:10px 6vw}
+    .pstep p{grid-column:1/-1;padding:0 6vw 24px;max-width:100%}
     nav .links,nav .cta{display:none}
     nav .burger{display:flex;align-items:center;padding:0 18px;border-left:1px solid var(--ink);background:none;border-top:none;border-bottom:none;border-right:none;font-family:var(--mono);font-size:11px;letter-spacing:.12em}
-    #mmenu{display:none;position:fixed;inset:52px 0 0 0;background:var(--paper);z-index:99;flex-direction:column;padding:64px 6vw}
+    #mmenu{display:none;position:fixed;inset:52px 0 0 0;background:var(--paper);z-index:99;flex-direction:column;padding:8vh 6vw;overflow-y:auto}
     #mmenu.open{display:flex}
     #mmenu a{font-family:var(--disp);font-size:34px;text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--concrete)}
     #mmenu a:active{color:var(--red)}
     .hero{grid-template-columns:1fr;min-height:auto}
-    .hero-right{order:-1;height:416px;border-left:none;border-bottom:1px solid var(--ink)}
-    .hero-left{padding:48px 6vw}
+    .hero-right{order:-1;height:45svh;border-left:none;border-bottom:1px solid var(--ink)}
+    .hero-left{padding:6vh 6vw}
     .cities{grid-template-columns:1fr;min-height:auto}
-    .city{height:512px;border-right:none;border-bottom:1px solid var(--ink)}
+    .city{height:55svh;border-right:none;border-bottom:1px solid var(--ink)}
     .wgrid{columns:1}
-    .fw-strip img{height:320px}
-    .ways{padding:48px 6vw}
+    .fw-strip img{height:35vh}
+    .ways{padding:6vh 6vw}
+    .map .grid{grid-template-columns:1fr}
     #mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:98;background:var(--red);color:#fff;text-align:center;padding:16px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
     body{padding-bottom:50px}
   }

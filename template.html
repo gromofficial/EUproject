@@ -1,0 +1,793 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danil Gherbali</title>
+<meta name="description" content="Fashion content production in Paris & Milan by Danil Gherbali. You send the clothes. We do the rest. Photography, Reels and campaign content for fashion brands.">
+<meta property="og:title" content="Danil Gherbali — Fashion Content Production, Paris & Milan">
+<meta property="og:description" content="You send the clothes. We do the rest. Editorial photography and short-form video shot in Europe's fashion capitals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F2F0EB; --ink:#0A0A0A; --charcoal:#1C1C1C; --concrete:#C9C6BF;
+    --grey:#8A877F; --red:#E1261C;
+    --disp:'Archivo Black', Impact, 'Arial Black', sans-serif;
+    --sans:'Archivo', Helvetica, Arial, sans-serif;
+    --mono:'IBM Plex Mono', 'Courier New', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:#fff}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .red{color:var(--red)}
+  button{font-family:inherit;cursor:pointer}
+  :focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:stretch;background:var(--paper);border-bottom:1px solid var(--ink);height:52px}
+  nav .logo{display:block;width:52px;border-right:1px solid var(--ink)}
+  nav .logo span{color:var(--red)}
+  nav .links{display:flex;flex:1;justify-content:center;align-items:stretch}
+  nav .links a{display:flex;align-items:center;padding:0 16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;position:relative}
+  nav .links a:hover{color:var(--red)}
+  nav .lang{display:flex;align-items:stretch;border-left:1px solid var(--ink)}
+  nav .lang button{background:none;border:none;padding:0 12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--grey)}
+  nav .lang button.on{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--red);text-decoration-thickness:2px}
+  nav .cta{display:flex;align-items:center;padding:0 22px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.1em;white-space:nowrap}
+  nav .cta:hover{background:var(--red)}
+  nav .burger{display:none}
+  /* mobile menu */
+  #mmenu{display:none}
+
+  /* ── HERO ── */
+  .hero{min-height:100svh;position:relative;display:grid;grid-template-columns:1.15fr .85fr;border-bottom:1px solid var(--ink);padding-top:52px}
+  .hero-left{padding:8vh 4vw 6vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2}
+  .hero h1{font-family:var(--disp);font-size:clamp(52px,8.2vw,150px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase}
+  .hero h1 .rest{display:block;font-size:.36em;margin-top:.5em;letter-spacing:0}
+  .hero h1 .rest em{font-style:normal;color:var(--red)}
+  .hero-meta{margin-top:6vh;display:flex;gap:40px;align-items:flex-end;flex-wrap:wrap}
+  .hero-meta .block{border:1px solid var(--ink);padding:12px 16px}
+  .hero-meta .block div{font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+  .scrolldn{font-family:var(--mono);font-size:11px;letter-spacing:.14em;display:inline-flex;gap:8px;align-items:center}
+  .scrolldn .ar{display:inline-block;animation:dn 1.6s ease-in-out infinite}
+  @keyframes dn{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  .hero-right{position:relative;overflow:hidden;border-left:1px solid var(--ink)}
+  .hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(.92)}
+  .hero-tag{position:absolute;bottom:0;left:0;background:var(--ink);color:var(--paper);padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+  .vert{position:absolute;top:64px;right:14px;writing-mode:vertical-rl;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--paper);mix-blend-mode:difference;z-index:3}
+
+  /* ── MARQUEE ── */
+  .marquee{border-bottom:1px solid var(--ink);overflow:hidden;background:var(--paper);white-space:nowrap;padding:10px 0}
+  .marquee.dark{background:var(--ink);color:var(--paper);border-top:1px solid var(--ink)}
+  .marquee .track{display:inline-block;animation:mq 28s linear infinite}
+  .marquee span{font-family:var(--disp);font-size:20px;letter-spacing:.02em;margin-right:48px;text-transform:uppercase}
+  .marquee .dot{color:var(--red)}
+  @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ── SECTION SHELL ── */
+  section{position:relative}
+  .snum{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--grey);display:block;margin-bottom:26px}
+  .snum b{color:var(--red);font-weight:500}
+
+  /* ── INTRO ── */
+  .intro{padding:14vh 4vw;border-bottom:1px solid var(--ink)}
+  .intro h2{font-family:var(--disp);font-size:clamp(34px,5.4vw,96px);line-height:.95;text-transform:uppercase;letter-spacing:-.015em;max-width:18ch}
+  .intro p{max-width:56ch;margin-top:40px;font-size:17px;color:var(--charcoal)}
+  .no3{margin-top:9vh;display:grid;grid-template-columns:repeat(3,auto);gap:0;width:fit-content;border:1px solid var(--ink)}
+  .no3 div{padding:20px 30px;border-right:1px solid var(--ink);font-family:var(--disp);font-size:clamp(15px,1.6vw,26px);text-transform:uppercase}
+  .no3 div:last-child{border-right:none}
+  .no3 div s{text-decoration-color:var(--red);text-decoration-thickness:3px}
+  .justsend{margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+
+  /* ── SERVICES ── */
+  .services{border-bottom:1px solid var(--ink)}
+  .services header{padding:10vh 4vw 6vh}
+  .services h2{font-family:var(--disp);font-size:clamp(40px,6vw,110px);text-transform:uppercase;letter-spacing:-.02em}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+  .svc{border-bottom:1px solid var(--ink);padding:34px 4vw 40px;position:relative;transition:background .25s}
+  .svc:nth-child(odd){border-right:1px solid var(--ink)}
+  .svc:hover{background:var(--ink);color:var(--paper)}
+  .svc:hover .n{color:var(--red)}
+  .svc .n{font-family:var(--disp);font-size:64px;line-height:1;color:var(--concrete);transition:color .25s}
+  .svc h3{font-family:var(--disp);font-size:clamp(20px,2vw,32px);text-transform:uppercase;margin:18px 0 12px;letter-spacing:-.01em}
+  .svc p{max-width:44ch;font-size:15px;opacity:.82}
+  .svc .arr{position:absolute;top:34px;right:4vw;font-family:var(--mono);opacity:0;transition:opacity .25s;color:var(--red)}
+  .svc:hover .arr{opacity:1}
+
+  /* ── CITIES ── */
+  .cities{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--ink);min-height:92vh}
+  .city{position:relative;overflow:hidden;cursor:pointer;border-right:1px solid var(--ink)}
+  .city:last-child{border-right:none}
+  .city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .6s;filter:grayscale(1) contrast(1.1)}
+  .city:hover img{transform:scale(1.05);filter:grayscale(0) contrast(1.04)}
+  .city .name{position:absolute;left:0;right:0;bottom:8vh;text-align:center;font-family:var(--disp);font-size:clamp(56px,7vw,130px);color:#fff;text-transform:uppercase;letter-spacing:-.02em;mix-blend-mode:difference;z-index:2}
+  .city .sub{position:absolute;left:0;right:0;bottom:4.5vh;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:#fff;opacity:0;transform:translateY(8px);transition:.4s;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .city:hover .sub{opacity:1;transform:none}
+  .city .coord{position:absolute;top:24px;left:24px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.7);z-index:2}
+  .cities-cta{grid-column:1/-1;border-top:1px solid var(--ink);text-align:center;padding:22px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;background:var(--paper)}
+  .cities-cta a:hover{color:var(--red)}
+
+  /* ── FASHION WEEK ── */
+  .fw{background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink);padding:12vh 0 0}
+  .fw .head{padding:0 4vw}
+  .fw h2{font-family:var(--disp);font-size:clamp(44px,7.4vw,138px);line-height:.9;text-transform:uppercase;letter-spacing:-.02em}
+  .fw h2 .loc{color:var(--red)}
+  .fw .lead{max-width:52ch;margin-top:34px;color:#B9B6AE;font-size:16px}
+  .fw .meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:#8A877F}
+  .fw-strip{margin-top:8vh;display:flex;gap:1px;background:#000;overflow-x:auto;scrollbar-width:none;border-top:1px solid #333}
+  .fw-strip::-webkit-scrollbar{display:none}
+  .fw-strip figure{flex:0 0 auto;position:relative}
+  .fw-strip img{height:52vh;width:auto;filter:contrast(1.05)}
+  .fw-strip figcaption{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;background:rgba(0,0,0,.72);padding:4px 8px}
+
+  /* ── WORK ── */
+  .work{border-bottom:1px solid var(--ink);padding:12vh 0 0}
+  .work header{padding:0 4vw 7vh;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+  .work h2{font-family:var(--disp);font-size:clamp(40px,6vw,110px);text-transform:uppercase;letter-spacing:-.02em}
+  .wgrid{columns:3;column-gap:0;background:var(--paper);border-top:1px solid var(--ink)}
+  .witem{break-inside:avoid;position:relative;overflow:hidden;display:block;background:var(--paper);border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);box-sizing:border-box}
+  .witem img{width:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .witem:hover img{transform:scale(1.045)}
+  .witem .wmeta{position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;padding:44px 16px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;opacity:0;transition:.35s}
+  .witem:hover .wmeta{opacity:1}
+  .witem .wmeta b{display:block;font-family:var(--disp);font-size:15px;letter-spacing:.02em;margin-bottom:4px}
+  .witem .wmeta .a{position:absolute;right:14px;bottom:14px;color:var(--red);font-size:14px}
+
+  /* ── PIPELINE ── */
+  .pipe{border-bottom:1px solid var(--ink);padding:12vh 4vw}
+  .pipe h2{font-family:var(--disp);font-size:clamp(36px,5vw,92px);text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
+  .pipe-row{margin-top:8vh;display:flex;align-items:stretch;gap:0;overflow-x:auto;border:1px solid var(--ink);width:fit-content;max-width:100%}
+  .pipe-row .step{padding:22px 26px;border-right:1px solid var(--ink);font-family:var(--disp);font-size:clamp(14px,1.5vw,22px);text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:18px}
+  .pipe-row .step:last-child{border-right:none;background:var(--red);color:#fff}
+  .pipe-row .step:first-child{background:var(--ink);color:var(--paper)}
+  .pipe-row .ar{color:var(--red);font-family:var(--mono)}
+  .pipe-note{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--grey)}
+
+  /* ── PROCESS ── */
+  .process{border-bottom:1px solid var(--ink)}
+  .process header{padding:12vh 4vw 6vh}
+  .process h2{font-family:var(--disp);font-size:clamp(40px,6vw,110px);text-transform:uppercase;letter-spacing:-.02em}
+  .steps{border-top:1px solid var(--ink)}
+  .pstep{display:grid;grid-template-columns:120px 1fr 1.4fr;border-bottom:1px solid var(--ink)}
+  .pstep:last-child{border-bottom:none}
+  .pstep .num{font-family:var(--disp);font-size:44px;padding:28px 0 28px 4vw;color:var(--concrete)}
+  .pstep h3{font-family:var(--disp);font-size:clamp(18px,2vw,30px);text-transform:uppercase;padding:34px 20px}
+  .pstep p{padding:38px 4vw 38px 0;color:var(--charcoal);font-size:15px;max-width:52ch}
+  .bigline{padding:10vh 4vw;text-align:left}
+  .bigline p{font-family:var(--disp);font-size:clamp(30px,4.6vw,84px);line-height:1;text-transform:uppercase;letter-spacing:-.015em}
+  .bigline p em{font-style:normal;color:var(--red)}
+
+  /* ── MANIFESTO (everything else) ── */
+  .manif{background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink);padding:14vh 4vw}
+  .manif .you{font-family:var(--disp);font-size:clamp(56px,9vw,170px);line-height:.86;text-transform:uppercase;letter-spacing:-.02em}
+  .manif .we{font-family:var(--disp);font-size:clamp(60px,10vw,190px);line-height:.86;text-transform:uppercase;letter-spacing:-.02em;color:var(--red);margin-top:5vh}
+  .manif ul{margin-top:8vh;display:flex;flex-wrap:wrap;gap:10px 34px;list-style:none}
+  .manif li{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#B9B6AE}
+  .manif li::before{content:"— ";color:var(--red)}
+
+  /* ── SOCIAL ── */
+  .social{border-bottom:1px solid var(--ink);padding:12vh 4vw}
+  .social h2{font-family:var(--disp);font-size:clamp(34px,5vw,92px);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;max-width:16ch}
+  .phones{margin-top:8vh;display:flex;gap:26px;flex-wrap:wrap}
+  .phone{width:min(240px,60vw);border:1px solid var(--ink);background:#fff}
+  .phone .scr{aspect-ratio:9/16;overflow:hidden;position:relative}
+  .phone .scr img{width:100%;height:100%;object-fit:cover}
+  .phone .lbl{border-top:1px solid var(--ink);padding:10px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;display:flex;justify-content:space-between}
+  .phone .lbl i{font-style:normal;color:var(--red)}
+
+  /* ── DELIVERABLES ── */
+  .deliv{border-bottom:1px solid var(--ink)}
+  .deliv .dgrid{display:grid;grid-template-columns:repeat(5,1fr)}
+  .deliv .cell{border-right:1px solid var(--ink);padding:44px 22px 60px;position:relative}
+  .deliv .cell:last-child{border-right:none}
+  .deliv .cell h3{font-family:var(--disp);font-size:clamp(18px,1.8vw,30px);text-transform:uppercase}
+  .deliv .cell p{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--grey);text-transform:uppercase}
+  .deliv .note{border-top:1px solid var(--ink);padding:16px 4vw;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--grey)}
+
+  /* ── WHO FOR ── */
+  .who{border-bottom:1px solid var(--ink);display:grid;grid-template-columns:1.2fr .8fr}
+  .who .txt{padding:12vh 4vw}
+  .who h2{font-family:var(--disp);font-size:clamp(30px,4vw,72px);text-transform:uppercase;line-height:.98;letter-spacing:-.015em;max-width:18ch}
+  .who ul{margin-top:6vh;list-style:none;columns:2;gap:40px}
+  .who li{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--concrete);break-inside:avoid}
+  .who li::before{content:"→ ";color:var(--red)}
+  .who .im{border-left:1px solid var(--ink);position:relative;overflow:hidden;min-height:420px}
+  .who .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05)}
+
+  /* ── PHOTOGRAPHER ── */
+  .photog{border-bottom:1px solid var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;background:var(--charcoal);color:var(--paper)}
+  .photog .im{position:relative;overflow:hidden;min-height:560px;border-right:1px solid #000}
+  .photog .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12)}
+  .photog .im::after{content:"@DAANGROM";position:absolute;top:22px;left:22px;background:var(--red);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.2em;padding:6px 10px}
+  .photog .im .vlab{position:absolute;bottom:20px;right:14px;writing-mode:vertical-rl;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:#fff;mix-blend-mode:difference}
+  .photog .txt{padding:11vh 4vw;display:flex;flex-direction:column;justify-content:center}
+  .photog .kick{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--red);margin-bottom:22px}
+  .photog h2{font-family:var(--disp);font-size:clamp(38px,4.6vw,84px);line-height:.92;text-transform:uppercase;letter-spacing:-.02em}
+  .photog h2 span{color:var(--red)}
+  .photog .role{margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:#B9B6AE;text-transform:uppercase}
+  .photog p{margin-top:30px;max-width:52ch;font-size:16px;color:#D8D5CD}
+  .photog .meta{margin-top:40px;display:grid;grid-template-columns:repeat(3,auto);width:fit-content;border:1px solid #444}
+  .photog .meta div{padding:14px 22px;border-right:1px solid #444;font-family:var(--mono);font-size:10px;letter-spacing:.12em;line-height:1.9;color:#B9B6AE}
+  .photog .meta div:last-child{border-right:none}
+  .photog .meta b{display:block;color:var(--paper);font-size:11px}
+  .photog .sig{margin-top:36px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red)}
+  .photog .igbtn{margin-top:26px;display:inline-block;width:fit-content;padding:15px 28px;border:1px solid var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--paper)}
+  .photog .igbtn:hover{background:var(--red);border-color:var(--red)}
+
+  /* ── PHILOSOPHY ── */
+  .philo{border-bottom:1px solid var(--ink);padding:16vh 4vw;text-align:center}
+  .philo p{font-family:var(--disp);font-size:clamp(22px,3vw,54px);line-height:1.18;text-transform:uppercase;letter-spacing:-.01em;max-width:26ch;margin:0 auto}
+  .philo p+p{margin-top:3.2vh}
+  .philo .last{color:var(--red)}
+
+  /* ── MAP ── */
+  .map{background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink);padding:12vh 4vw;position:relative;overflow:hidden}
+  .map h2{font-family:var(--disp);font-size:clamp(34px,5vw,92px);text-transform:uppercase;letter-spacing:-.02em}
+  .map .grid{margin-top:8vh;display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr))}
+  .map .loc{background:var(--ink);padding:26px 22px;border:1px solid #333;margin:-1px 0 0 -1px}
+  .map .loc b{font-family:var(--disp);font-size:clamp(17px,1.6vw,26px);text-transform:uppercase;display:block;letter-spacing:-.01em}
+  .map .loc.now b{color:var(--red)}
+  .map .loc .co{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A877F;line-height:1.8}
+  .map .loc .st{margin-top:10px;font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#5c5a55}
+
+  /* ── FAQ ── */
+  .faq{border-bottom:1px solid var(--ink)}
+  .faq header{padding:12vh 4vw 6vh}
+  .faq h2{font-family:var(--disp);font-size:clamp(34px,5vw,92px);text-transform:uppercase;letter-spacing:-.02em}
+  .qa{border-top:1px solid var(--ink)}
+  .qa details{border-bottom:1px solid var(--ink)}
+  .qa summary{padding:24px 4vw;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:var(--disp);font-size:clamp(14px,1.6vw,22px);text-transform:uppercase;list-style:none}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary .pm{font-family:var(--mono);color:var(--red);font-size:18px;flex-shrink:0}
+  .qa details[open] summary .pm::before{content:"–"}
+  .qa details:not([open]) summary .pm::before{content:"+"}
+  .qa .ans{padding:0 4vw 28px;max-width:60ch;color:var(--charcoal);font-size:15px}
+
+  /* ── FINAL CTA ── */
+  .final{background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink);padding:16vh 4vw;text-align:left}
+  .final h2{font-family:var(--disp);font-size:clamp(44px,7.4vw,140px);line-height:.9;text-transform:uppercase;letter-spacing:-.02em}
+  .final .wait{margin-top:5vh;font-family:var(--mono);font-size:13px;letter-spacing:.2em;color:#B9B6AE}
+  .final .wait span{color:var(--red)}
+  .final .btns{margin-top:6vh;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:18px 34px;border:1px solid var(--paper);font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .btn.solid{background:var(--red);border-color:var(--red);color:#fff}
+  .btn.solid:hover{background:#fff;color:var(--ink);border-color:#fff}
+  .btn.ghost:hover{background:var(--paper);color:var(--ink)}
+  .final .tags{margin-top:6vh;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#8A877F}
+
+  /* ── CONTACT ── */
+  .contact{border-bottom:1px solid var(--ink);display:grid;grid-template-columns:1fr 1.2fr}
+  .contact .lhs{padding:12vh 4vw;border-right:1px solid var(--ink)}
+  .contact h2{font-family:var(--disp);font-size:clamp(30px,3.6vw,64px);text-transform:uppercase;line-height:.98;letter-spacing:-.015em}
+  .contact .alt{margin-top:5vh;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--grey);max-width:30ch;line-height:2}
+  .ways{display:flex;flex-direction:column;justify-content:center;padding:8vh 4vw}
+  .way{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;border-top:1px solid var(--ink);padding:38px 0 34px;position:relative;transition:padding-left .3s}
+  .way:last-of-type{border-bottom:1px solid var(--ink)}
+  .way:hover{padding-left:18px}
+  .way .wk{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--grey);flex-basis:100%}
+  .way .wv{font-family:var(--disp);font-size:clamp(26px,3.4vw,58px);letter-spacing:-.01em;text-transform:uppercase;line-height:1}
+  .way:hover .wv{color:var(--red)}
+  .way .wa{position:absolute;right:0;bottom:34px;font-family:var(--mono);font-size:20px;color:var(--red);opacity:0;transition:opacity .3s,transform .3s;transform:translateX(-10px)}
+  .way:hover .wa{opacity:1;transform:none}
+  .wnote{margin-top:34px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--grey);line-height:2}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+  .field{margin-bottom:26px}
+  .field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;color:var(--charcoal)}
+  .field input,.field select,.field textarea{width:100%;border:none;border-bottom:1px solid var(--ink);background:transparent;padding:10px 2px;font-family:var(--sans);font-size:15px;border-radius:0;color:var(--ink)}
+  .field textarea{min-height:90px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom:2px solid var(--red)}
+  .send{margin-top:10px;padding:18px 38px;background:var(--ink);color:var(--paper);border:none;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .send:hover{background:var(--red)}
+
+  /* ── FOOTER ── */
+  footer{background:var(--ink);color:var(--paper);padding:10vh 4vw 30px}
+  footer .biglogo{font-family:var(--disp);font-size:clamp(44px,8.4vw,160px);line-height:.85;letter-spacing:-.02em;text-transform:uppercase}
+  footer .biglogo span{color:var(--red)}
+  footer .cols{margin-top:7vh;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-top:1px solid #333;padding-top:30px}
+  footer .cols a{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:5px 0;color:#B9B6AE}
+  footer .cols a:hover{color:var(--red)}
+  footer .legal{margin-top:8vh;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#5c5a55}
+
+  /* reveal on scroll — ascuns doar când JS e activ (progressive enhancement) */
+  .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .noanim .rv{opacity:1!important;transform:none!important;transition:none!important}
+  .noanim{scroll-behavior:auto!important}
+  .noanim .hero{min-height:860px}
+  .noanim .cities{min-height:860px}
+  .noanim .marquee .track{animation:none}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto}
+    .rv{opacity:1;transform:none}
+  }
+
+  /* sticky mobile CTA */
+  #mcta{display:none}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1000px){
+    .svc-grid{grid-template-columns:1fr}
+    .svc:nth-child(odd){border-right:none}
+    .wgrid{columns:2}
+    .deliv .dgrid{grid-template-columns:repeat(2,1fr)}
+    .deliv .cell{border-bottom:1px solid var(--ink)}
+    .photog{grid-template-columns:1fr}
+    .photog .im{min-height:70vw;border-right:none;border-bottom:1px solid #000}
+    .who{grid-template-columns:1fr}
+    .who .im{border-left:none;border-top:1px solid var(--ink)}
+    .contact{grid-template-columns:1fr}
+    .contact .lhs{border-right:none;border-bottom:1px solid var(--ink)}
+    .pstep{grid-template-columns:80px 1fr}
+    .pstep p{grid-column:1/-1;padding:0 4vw 30px}
+  }
+  @media(max-width:720px){
+    .hero h1{font-size:min(11.5vw,150px)}
+    .intro h2{font-size:min(8.4vw,96px);max-width:none}
+    .fw h2{font-size:min(10vw,138px)}
+    .work h2,.services h2,.process h2,.faq h2,.map h2{font-size:min(10.4vw,110px)}
+    .final h2{font-size:min(10.4vw,140px)}
+    .manif .you{font-size:min(15vw,170px)}
+    .manif .we{font-size:min(15.5vw,190px)}
+    .no3{grid-template-columns:1fr;width:100%}
+    .no3 div{border-right:none;border-bottom:1px solid var(--ink)}
+    .no3 div:last-child{border-bottom:none}
+    nav .links,nav .cta{display:none}
+    nav .burger{display:flex;align-items:center;padding:0 18px;border-left:1px solid var(--ink);background:none;border-top:none;border-bottom:none;border-right:none;font-family:var(--mono);font-size:11px;letter-spacing:.12em}
+    #mmenu{display:none;position:fixed;inset:52px 0 0 0;background:var(--paper);z-index:99;flex-direction:column;padding:8vh 6vw}
+    #mmenu.open{display:flex}
+    #mmenu a{font-family:var(--disp);font-size:34px;text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--concrete)}
+    #mmenu a:active{color:var(--red)}
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-right{order:-1;height:52svh;border-left:none;border-bottom:1px solid var(--ink)}
+    .hero-left{padding:6vh 6vw}
+    .cities{grid-template-columns:1fr;min-height:auto}
+    .city{height:64svh;border-right:none;border-bottom:1px solid var(--ink)}
+    .wgrid{columns:1}
+    .fw-strip img{height:40vh}
+    .ways{padding:6vh 6vw}
+    #mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:98;background:var(--red);color:#fff;text-align:center;padding:16px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+    body{padding-bottom:50px}
+  }
+</style>
+
+<nav aria-label="Main">
+  <a class="logo" href="#top" aria-label="Top"></a>
+  <div class="links">
+    <a href="#services" data-i18n="nav_services">SERVICES</a>
+    <a href="#paris">PARIS</a>
+    <a href="#milan">MILAN</a>
+    <a href="#work" data-i18n="nav_work">WORK</a>
+    <a href="#process" data-i18n="nav_process">PROCESS</a>
+    <a href="#contact" data-i18n="nav_contact">CONTACT</a>
+  </div>
+  <div class="lang" role="group" aria-label="Language">
+    <button id="len" class="on" aria-label="English">EN</button>
+    <button id="lro" aria-label="Română">RO</button>
+  </div>
+  <a class="cta" href="#contact" data-i18n="nav_cta">START A PROJECT →</a>
+  <button class="burger" id="burger" aria-label="Menu">MENU</button>
+</nav>
+<div id="mmenu">
+  <a href="#services" data-i18n="nav_services">SERVICES</a>
+  <a href="#paris">PARIS</a>
+  <a href="#milan">MILAN</a>
+  <a href="#work" data-i18n="nav_work">WORK</a>
+  <a href="#process" data-i18n="nav_process">PROCESS</a>
+  <a href="#contact" data-i18n="nav_contact">CONTACT</a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-left">
+    <h1 data-i18n-html="hero_h1">YOU SEND<br>THE CLOTHES.<span class="rest">WE DO <em>THE REST.</em></span></h1>
+    <div class="hero-meta">
+      <div class="block">
+        <div>PARIS / MILAN</div>
+        <div>PHOTO + VIDEO</div>
+        <div>FASHION WEEK</div>
+        <div class="red">2026 →</div>
+      </div>
+      <a class="scrolldn" href="#intro"><span data-i18n="scroll">SCROLL</span> <span class="ar">↓</span></a>
+    </div>
+  </div>
+  <div class="hero-right" id="heroimg">
+    <img src="{{IMG_heronew}}" alt="Street-style editorial — Paris Fashion Week" >
+    <div class="vert">FASHION CONTENT PRODUCTION — EST. BUCHAREST → PARIS → MILAN</div>
+    <div class="hero-tag">© DANIL GHERBALI / EDITORIAL 01</div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track"><span>PARIS <i class="dot">—</i> MILAN <i class="dot">—</i> PARIS <i class="dot">—</i> MILAN <i class="dot">—</i> PARIS <i class="dot">—</i> MILAN <i class="dot">—</i> </span><span>PARIS <i class="dot">—</i> MILAN <i class="dot">—</i> PARIS <i class="dot">—</i> MILAN <i class="dot">—</i> PARIS <i class="dot">—</i> MILAN <i class="dot">—</i> </span></div></div>
+
+<section class="intro rv" id="intro">
+  <span class="snum"><b>01</b> — INTRO</span>
+  <h2 data-i18n-html="intro_h2">YOU SEND THE CLOTHES.<br>WE TAKE THEM TO PARIS.</h2>
+  <p data-i18n="intro_p">We create fashion content for brands that want more than another studio shoot. We take your pieces into the streets of Paris, Milan and beyond—developing the concept, finding the locations, producing the shoot and delivering photography and video ready for your social channels.</p>
+  <div class="no3">
+    <div data-i18n="no1">NO TRAVEL.</div>
+    <div data-i18n="no2">NO PRODUCTION HEADACHE.</div>
+    <div data-i18n="no3">NO ENDLESS BRIEFING.</div>
+  </div>
+  <p class="justsend mono" data-i18n="justsend">“JUST SEND US THE COLLECTION.”</p>
+</section>
+
+<section class="photog rv" id="danil">
+  <div class="im">
+    <img src="{{IMG_danil}}" alt="Danil Gherbali — fashion photographer, portrait">
+    <div class="vlab">PARIS — MILAN — BUCHAREST</div>
+  </div>
+  <div class="txt">
+    <span class="kick"><b>02</b> — <span data-i18n="pg_kick">THE PHOTOGRAPHER</span></span>
+    <h2>DANIL<br><span>GHERBALI</span></h2>
+    <div class="role" data-i18n="pg_role">FOUNDER / FASHION PHOTOGRAPHER</div>
+    <p data-i18n="pg_bio">The eye behind every frame. Danil shoots street style and editorials inside the energy of Paris and Milan fashion weeks — from the crowds outside Schiaparelli to the backstage of Bucharest runways. Every production is directed and photographed by him, start to finish.</p>
+    <div class="meta">
+      <div><b data-i18n="pg_m1b">SHOOTS IN</b>PARIS / MILAN<br>BUCHAREST</div>
+      <div><b data-i18n="pg_m2b">FOCUS</b><span data-i18n="pg_m2">STREET STYLE<br>EDITORIAL / RUNWAY</span></div>
+      <div><b data-i18n="pg_m3b">SEASON</b>SS/AW 2026<br>PFW · MFW</div>
+    </div>
+    <div class="sig" data-i18n="pg_sig">EVERY FRAME ON THIS SITE — SHOT BY DANIL.</div>
+    <a class="igbtn" href="https://www.instagram.com/daangrom" target="_blank" rel="noopener">INSTAGRAM — @DAANGROM ↗</a>
+  </div>
+</section>
+
+
+<section class="services" id="services">
+  <header class="rv">
+    <span class="snum"><b>03</b> — SERVICES</span>
+    <h2 data-i18n="svc_h2">WHAT WE DO</h2>
+  </header>
+  <div class="svc-grid">
+    <div class="svc rv"><span class="n">01</span><span class="arr">→</span><h3 data-i18n="s1t">CREATIVE DIRECTION</h3><p data-i18n="s1p">We develop the visual concept around your collection, location and brand identity.</p></div>
+    <div class="svc rv"><span class="n">02</span><span class="arr">→</span><h3 data-i18n="s2t">FASHION PHOTOGRAPHY</h3><p data-i18n="s2p">High-end editorial and street-style photography designed for campaigns, websites and Instagram.</p></div>
+    <div class="svc rv"><span class="n">03</span><span class="arr">→</span><h3 data-i18n="s3t">REELS + SHORT-FORM VIDEO</h3><p data-i18n="s3p">Cinematic, social-first video designed for Instagram Reels, TikTok and modern fashion storytelling.</p></div>
+    <div class="svc rv"><span class="n">04</span><span class="arr">→</span><h3 data-i18n="s4t">LOCATION SCOUTING</h3><p data-i18n="s4p">We find the streets, architecture, cafés, hotels, rooftops and unexpected locations that make the content feel authentically European.</p></div>
+    <div class="svc rv"><span class="n">05</span><span class="arr">→</span><h3 data-i18n="s5t">FASHION WEEK CONTENT</h3><p data-i18n="s5p">Content created around the energy of Paris Fashion Week and Milan Fashion Week.</p></div>
+    <div class="svc rv"><span class="n">06</span><span class="arr">→</span><h3 data-i18n="s6t">FULL PRODUCTION</h3><p data-i18n="s6p">You provide the garments. We handle everything else.</p></div>
+  </div>
+</section>
+
+<section class="cities" id="paris">
+  <div class="city" id="cityparis" data-slot="paris">
+    <img src="{{IMG_cityparis}}" alt="Paris — street style at the Louvre, Paris Fashion Week">
+    <div class="coord">48.8566° N / 2.3522° E</div>
+    <div class="name">PARIS</div>
+    <div class="sub">STREET STYLE / EDITORIAL / FASHION WEEK</div>
+  </div>
+  <div class="city" id="milan" data-slot="milan">
+    <img src="{{IMG_citymilan}}" alt="Milan — street style, Milan Fashion Week">
+    <div class="coord">45.4642° N / 9.1900° E</div>
+    <div class="name">MILAN</div>
+    <div class="sub">ARCHITECTURE / STREET STYLE / FASHION WEEK</div>
+  </div>
+  <div class="cities-cta"><a href="#contact" data-i18n="city_cta">CHOOSE YOUR CITY →</a></div>
+</section>
+
+<section class="fw">
+  <div class="head rv">
+    <span class="snum"><b>04</b> — FASHION WEEK</span>
+    <h2 data-i18n-html="fw_h2">FASHION WEEK<br>IS NOT JUST<br>A SHOW.<br><span class="loc" data-i18n="fw_loc">IT'S A LOCATION.</span></h2>
+    <p class="lead" data-i18n="fw_p">During fashion week, the streets become runways. We create content inside that energy—where your brand doesn't just look good, it looks like it belongs.</p>
+    <div class="meta"><span>PARIS</span><span>MILAN</span><span>FASHION WEEK</span><span>STREET STYLE</span><span>BACKSTAGE</span><span>EDITORIAL</span><span class="red">2026</span></div>
+  </div>
+  <div class="fw-strip">
+    <figure><img src="{{IMG_fwwide}}" alt="Runway show wide shot" loading="lazy"><figcaption>RUNWAY / 21:14</figcaption></figure>
+    <figure><img src="{{IMG_fwgloves}}" alt="Backstage — denim look with green gloves" loading="lazy"><figcaption>BACKSTAGE / 19:02</figcaption></figure>
+    <figure><img src="{{IMG_fwrunway}}" alt="Front row view" loading="lazy"><figcaption>FRONT ROW / 20:47</figcaption></figure>
+    <figure><img src="{{IMG_fwsilver}}" alt="Street style pair" loading="lazy"><figcaption>STREET / 18:30</figcaption></figure>
+    <figure><img src="{{IMG_fwcream}}" alt="Runway — cream coat" loading="lazy"><figcaption>RUNWAY / 21:26</figcaption></figure>
+    <figure><img src="{{IMG_fwprofile}}" alt="Backstage profile" loading="lazy"><figcaption>BACKSTAGE / 17:55</figcaption></figure>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <header class="rv">
+    <div>
+      <span class="snum"><b>05</b> — WORK</span>
+      <h2 data-i18n="work_h2">SELECTED WORK</h2>
+    </div>
+    <span class="mono" style="color:var(--grey)">2024 — 2026 / <span class="red">ARCHIVE</span></span>
+  </header>
+  <div class="wgrid">
+    <a class="witem" href="#contact"><img src="{{IMG_grey2}}" alt="Streetwear editorial — grey blazer with plaid bag" loading="lazy"><div class="wmeta"><b>PROJECT 01</b>PARIS · FASHION / STREET · PHOTO + VIDEO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_glasses}}" alt="Editorial portrait with statement glasses" loading="lazy"><div class="wmeta"><b>PROJECT 02</b>MILAN · CAMPAIGN · PHOTO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_carpet1}}" alt="Concept flat-lay editorial on persian carpet" loading="lazy"><div class="wmeta"><b>PROJECT 03</b>PARIS · SOCIAL CONTENT · PHOTO + REELS<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_suit1}}" alt="Pinstripe tailoring editorial" loading="lazy"><div class="wmeta"><b>PROJECT 04</b>MILAN · CAMPAIGN · PHOTO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_golf1}}" alt="Golf concept editorial" loading="lazy"><div class="wmeta"><b>PROJECT 05</b>PARIS · EDITORIAL · PHOTO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_trench}}" alt="Trench coat editorial portrait" loading="lazy"><div class="wmeta"><b>PROJECT 06</b>PARIS · FASHION / STREET · PHOTO + VIDEO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_carpet2}}" alt="Concept editorial on carpet with vinyl" loading="lazy"><div class="wmeta"><b>PROJECT 07</b>MILAN · SOCIAL CONTENT · REELS<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_ring}}" alt="Jewellery detail close-up" loading="lazy"><div class="wmeta"><b>PROJECT 08</b>PARIS · DETAIL · PHOTO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_grey3}}" alt="Grey blazer street editorial" loading="lazy"><div class="wmeta"><b>PROJECT 09</b>MILAN · FASHION / STREET · PHOTO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_golf2}}" alt="Golf shoes detail editorial" loading="lazy"><div class="wmeta"><b>PROJECT 10</b>PARIS · DETAIL · PHOTO + REELS<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_suit2}}" alt="Suit detail with rings" loading="lazy"><div class="wmeta"><b>PROJECT 11</b>MILAN · CAMPAIGN · PHOTO<span class="a">→</span></div></a>
+    <a class="witem" href="#contact"><img src="{{IMG_grey1}}" alt="Blazer and shorts street editorial" loading="lazy"><div class="wmeta"><b>PROJECT 12</b>PARIS · SOCIAL CONTENT · PHOTO<span class="a">→</span></div></a>
+  </div>
+</section>
+
+<section class="pipe rv">
+  <span class="snum"><b>06</b> — PIPELINE</span>
+  <h2 data-i18n-html="pipe_h2">FROM GARMENT<br>TO CAMPAIGN.</h2>
+  <div class="pipe-row">
+    <div class="step" data-i18n="pp1">YOUR CLOTHES</div>
+    <div class="step"><span class="ar">→</span> <span data-i18n="pp2">CONCEPT</span></div>
+    <div class="step"><span class="ar">→</span> <span data-i18n="pp3">CITY</span></div>
+    <div class="step"><span class="ar">→</span> <span data-i18n="pp4">SHOOT</span></div>
+    <div class="step"><span class="ar">→</span> <span data-i18n="pp5">EDIT</span></div>
+    <div class="step" data-i18n="pp6">CONTENT</div>
+  </div>
+  <p class="pipe-note" data-i18n="pipe_note">THE GARMENTS ARE THE ONLY THING YOU PROVIDE. EVERYTHING ELSE IS ON US.</p>
+</section>
+
+<section class="process" id="process">
+  <header class="rv">
+    <span class="snum"><b>07</b> — PROCESS</span>
+    <h2 data-i18n="proc_h2">HOW IT WORKS</h2>
+  </header>
+  <div class="steps">
+    <div class="pstep rv"><div class="num">01</div><h3 data-i18n="st1t">SEND THE CLOTHES</h3><p data-i18n="st1p">Ship us your pieces or coordinate delivery.</p></div>
+    <div class="pstep rv"><div class="num">02</div><h3 data-i18n="st2t">WE BUILD THE CONCEPT</h3><p data-i18n="st2p">We study your brand, collection, mood and target audience.</p></div>
+    <div class="pstep rv"><div class="num">03</div><h3 data-i18n="st3t">WE TAKE IT TO THE CITY</h3><p data-i18n="st3p">Paris, Milan or another selected location.</p></div>
+    <div class="pstep rv"><div class="num">04</div><h3 data-i18n="st4t">WE SHOOT</h3><p data-i18n="st4p">Photography + Reels + social-first content.</p></div>
+    <div class="pstep rv"><div class="num">05</div><h3 data-i18n="st5t">YOU GET THE CONTENT</h3><p data-i18n="st5p">Edited, polished, ready-to-publish assets.</p></div>
+  </div>
+  <div class="bigline rv"><p data-i18n-html="bigline">YOU DON'T NEED TO COME.<br><em>YOUR CLOTHES DO.</em></p></div>
+</section>
+
+<section class="manif rv">
+  <span class="snum" style="color:#5c5a55"><b>08</b> — MANIFESTO</span>
+  <div class="you" data-i18n-html="man_you">YOU<br>SEND<br>THE<br>CLOTHES.</div>
+  <div class="we" data-i18n-html="man_we">WE DO<br>EVERYTHING<br>ELSE.</div>
+  <ul>
+    <li data-i18n="m1">Concept</li><li data-i18n="m2">Creative direction</li><li data-i18n="m3">Location scouting</li><li data-i18n="m4">Production</li><li data-i18n="m5">Photography</li><li data-i18n="m6">Video</li><li data-i18n="m7">Editing</li><li data-i18n="m8">Delivery</li>
+  </ul>
+</section>
+
+<div class="marquee dark" aria-hidden="true"><div class="track"><span>PHOTO <i class="dot">/</i> VIDEO <i class="dot">/</i> CREATIVE <i class="dot">/</i> PRODUCTION <i class="dot">/</i> EDITORIAL <i class="dot">/</i> </span><span>PHOTO <i class="dot">/</i> VIDEO <i class="dot">/</i> CREATIVE <i class="dot">/</i> PRODUCTION <i class="dot">/</i> EDITORIAL <i class="dot">/</i> </span></div></div>
+
+<section class="social rv">
+  <span class="snum"><b>09</b> — SOCIAL</span>
+  <h2 data-i18n-html="soc_h2">BUILT FOR THE FEED.<br>NOT THE FILING CABINET.</h2>
+  <div class="phones">
+    <div class="phone"><div class="scr"><img src="{{IMG_grey2}}" alt="Vertical social frame — street editorial" loading="lazy"></div><div class="lbl"><span>REELS</span><i>9:16</i></div></div>
+    <div class="phone"><div class="scr"><img src="{{IMG_trench}}" alt="Vertical social frame — trench editorial" loading="lazy"></div><div class="lbl"><span>STORIES</span><i>9:16</i></div></div>
+    <div class="phone"><div class="scr"><img src="{{IMG_fwgloves}}" alt="Vertical social frame — backstage" loading="lazy"></div><div class="lbl"><span>CAMPAIGN</span><i>9:16</i></div></div>
+  </div>
+</section>
+
+<section class="deliv rv">
+  <div class="dgrid">
+    <div class="cell"><h3>PHOTO</h3><p data-i18n="d1">HIGH-RES EDITORIAL IMAGES</p></div>
+    <div class="cell"><h3>REELS</h3><p data-i18n="d2">SHORT-FORM VIDEO</p></div>
+    <div class="cell"><h3>SOCIAL</h3><p data-i18n="d3">INSTAGRAM-READY ASSETS</p></div>
+    <div class="cell"><h3 data-i18n="d4t">CAMPAIGN</h3><p data-i18n="d4">BRAND CAMPAIGN VISUALS</p></div>
+    <div class="cell"><h3 data-i18n="d5t">FLEXIBLE</h3><p data-i18n="d5">CUSTOM DELIVERABLES</p></div>
+  </div>
+  <div class="note" data-i18n="deliv_note">Deliverables are tailored to the collection, campaign and production scope.</div>
+</section>
+
+<section class="who rv">
+  <div class="txt">
+    <span class="snum"><b>10</b> — CLIENTS</span>
+    <h2 data-i18n="who_h2">FOR BRANDS THAT WANT TO LOOK LIKE THEY BELONG THERE.</h2>
+    <ul>
+      <li data-i18n="w1">Emerging fashion brands</li>
+      <li data-i18n="w2">Independent designers</li>
+      <li data-i18n="w3">Streetwear labels</li>
+      <li data-i18n="w4">Premium clothing brands</li>
+      <li data-i18n="w5">Luxury startups</li>
+      <li data-i18n="w6">Contemporary brands</li>
+      <li data-i18n="w7">Accessories brands</li>
+      <li data-i18n="w8">Footwear brands</li>
+      <li data-i18n="w9">Jewelry brands</li>
+    </ul>
+  </div>
+  <div class="im"><img src="{{IMG_fwcream}}" alt="Runway model in cream tailoring" loading="lazy"></div>
+</section>
+
+<section class="philo rv">
+  <span class="snum" style="text-align:center"><b>11</b> — PHILOSOPHY</span>
+  <p data-i18n="ph1">FASHION IS CONTEXT.</p>
+  <p data-i18n="ph2">A great garment in a white studio is still a great garment.</p>
+  <p data-i18n="ph3">But put it in Paris. Put it against Milanese architecture. Put it in motion. Give it atmosphere. Give it a story.</p>
+  <p class="last" data-i18n="ph4">THAT'S WHAT WE CREATE.</p>
+</section>
+
+<section class="map rv">
+  <span class="snum" style="color:#5c5a55"><b>12</b> — LOCATIONS</span>
+  <h2 data-i18n="map_h2">WHERE WE SHOOT</h2>
+  <div class="grid">
+    <div class="loc now"><b>PARIS</b><div class="co">48.8566° N<br>2.3522° E</div><div class="st" data-i18n="active">● ACTIVE</div></div>
+    <div class="loc now"><b>MILAN</b><div class="co">45.4642° N<br>9.1900° E</div><div class="st" data-i18n="active">● ACTIVE</div></div>
+    <div class="loc"><b>LONDON</b><div class="co">51.5072° N<br>0.1276° W</div><div class="st" data-i18n="soon">ON REQUEST</div></div>
+    <div class="loc"><b>COPENHAGEN</b><div class="co">55.6761° N<br>12.5683° E</div><div class="st" data-i18n="soon">ON REQUEST</div></div>
+    <div class="loc"><b>BERLIN</b><div class="co">52.5200° N<br>13.4050° E</div><div class="st" data-i18n="soon">ON REQUEST</div></div>
+    <div class="loc"><b>ROME</b><div class="co">41.9028° N<br>12.4964° E</div><div class="st" data-i18n="soon">ON REQUEST</div></div>
+    <div class="loc"><b>AMSTERDAM</b><div class="co">52.3676° N<br>4.9041° E</div><div class="st" data-i18n="soon">ON REQUEST</div></div>
+  </div>
+</section>
+
+<section class="faq">
+  <header class="rv">
+    <span class="snum"><b>13</b> — FAQ</span>
+    <h2 data-i18n="faq_h2">QUESTIONS</h2>
+  </header>
+  <div class="qa">
+    <details><summary><span data-i18n="q1">Do we need to travel with you?</span><span class="pm"></span></summary><p class="ans" data-i18n="a1">No. That's the point. You send us the clothes; we handle the production.</p></details>
+    <details><summary><span data-i18n="q2">Do you only shoot during Fashion Week?</span><span class="pm"></span></summary><p class="ans" data-i18n="a2">No. Fashion Week is a natural moment for the kind of content we create, but we produce shoots throughout the year.</p></details>
+    <details><summary><span data-i18n="q3">Can you shoot both photos and video?</span><span class="pm"></span></summary><p class="ans" data-i18n="a3">Yes. We can build a production around photography, Reels, or both.</p></details>
+    <details><summary><span data-i18n="q4">Where do you shoot?</span><span class="pm"></span></summary><p class="ans" data-i18n="a4">Primarily Paris and Milan, with other locations available depending on the project.</p></details>
+    <details><summary><span data-i18n="q5">What do we need to provide?</span><span class="pm"></span></summary><p class="ans" data-i18n="a5">Your clothing, your brand direction and the goals for the campaign. We take care of the production.</p></details>
+    <details><summary><span data-i18n="q6">Can you create content specifically for Instagram?</span><span class="pm"></span></summary><p class="ans" data-i18n="a6">Yes. The production can be designed around vertical video, social-first photography, Stories and Reels.</p></details>
+  </div>
+</section>
+
+<section class="final rv">
+  <h2 data-i18n-html="fin_h2">READY TO TAKE<br>YOUR BRAND<br>OUT OF THE STUDIO?</h2>
+  <p class="wait"><span>PARIS</span> <span data-i18n="wait1">IS WAITING.</span>&nbsp;&nbsp;<span>MILAN</span> <span data-i18n="wait2">IS WAITING.</span></p>
+  <div class="btns">
+    <a class="btn solid" href="#contact" data-i18n="fin_cta1">START A PROJECT →</a>
+    <a class="btn ghost" href="https://www.instagram.com/daangrom" target="_blank" rel="noopener" data-i18n="fin_cta2">DM ON INSTAGRAM →</a>
+  </div>
+  <p class="tags">PHOTO / VIDEO / PARIS / MILAN / FASHION WEEK</p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="lhs rv">
+    <span class="snum"><b>14</b> — CONTACT</span>
+    <h2 data-i18n-html="con_h2">LET'S MAKE SOMETHING<br>WORTH POSTING.</h2>
+    <p class="alt" data-i18n="con_lead">No forms. No briefs to fill in. Write on Instagram or by email — tell us the brand, the city and what you want to shoot.</p>
+  </div>
+  <div class="ways">
+    <a class="way" href="https://www.instagram.com/daangrom" target="_blank" rel="noopener">
+      <span class="wk" data-i18n="con_w1">INSTAGRAM — <span data-i18n="con_fast">FASTEST</span></span>
+      <span class="wv">@DAANGROM</span>
+      <span class="wa">↗</span>
+    </a>
+    <a class="way" href="mailto:contact@grom.ro?subject=Fashion%20content%20—%20Paris%20%2F%20Milan">
+      <span class="wk" data-i18n="con_w2">EMAIL</span>
+      <span class="wv">CONTACT@GROM.RO</span>
+      <span class="wa">↗</span>
+    </a>
+    <div class="wnote" data-i18n="con_note">TELL US: BRAND · CITY (PARIS / MILAN) · PHOTO / VIDEO / BOTH · TIMELINE</div>
+  </div>
+</section>
+
+<footer>
+  <div class="biglogo">DANIL<br><span>GHERBALI</span></div>
+  <div class="cols">
+    <div>
+      <a href="#work" data-i18n="nav_work">WORK</a>
+      <a href="#services" data-i18n="nav_services">SERVICES</a>
+      <a href="#paris">PARIS</a>
+      <a href="#milan">MILAN</a>
+      <a href="#process" data-i18n="nav_process">PROCESS</a>
+      <a href="#contact" data-i18n="nav_contact">CONTACT</a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/daangrom" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="#">TIKTOK ↗</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>PARIS → MILAN → <span data-i18n="every">EVERYWHERE</span></span>
+    <span>2026 © DANIL GHERBALI</span>
+  </div>
+</footer>
+<a id="mcta" href="#contact" data-i18n="nav_cta">START A PROJECT →</a>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  if (location.search.indexOf("noanim") !== -1) document.documentElement.classList.add("noanim");
+  // ── i18n ──
+  var RO = {
+    nav_services:"SERVICII", nav_work:"PORTOFOLIU", nav_process:"PROCES", nav_contact:"CONTACT",
+    nav_cta:"ÎNCEPE UN PROIECT →", scroll:"DERULEAZĂ",
+    hero_h1:"TU TRIMIȚI<br>HAINELE.<span class=\"rest\">NOI FACEM <em>RESTUL.</em></span>",
+    intro_h2:"TU TRIMIȚI HAINELE.<br>NOI LE DUCEM LA PARIS.",
+    intro_p:"Creăm conținut de fashion pentru branduri care vor mai mult decât încă un shooting de studio. Ducem piesele tale pe străzile Parisului, ale Milanului și mai departe — dezvoltăm conceptul, găsim locațiile, producem shootingul și livrăm fotografie și video gata de publicat pe canalele tale.",
+    no1:"FĂRĂ DEPLASĂRI.", no2:"FĂRĂ BĂTĂI DE CAP.", no3:"FĂRĂ BRIEF-URI NESFÂRȘITE.",
+    justsend:"„DOAR TRIMITE-NE COLECȚIA.”",
+    svc_h2:"CE FACEM",
+    s1t:"DIRECȚIE CREATIVĂ", s1p:"Dezvoltăm conceptul vizual în jurul colecției, locației și identității brandului tău.",
+    s2t:"FOTOGRAFIE DE FASHION", s2p:"Fotografie editorială și street-style de top, gândită pentru campanii, site și Instagram.",
+    s3t:"REELS + VIDEO SCURT", s3p:"Video cinematic, social-first, pentru Instagram Reels, TikTok și storytelling modern de fashion.",
+    s4t:"SCOUTING DE LOCAȚII", s4p:"Găsim străzile, arhitectura, cafenelele, hotelurile, acoperișurile și locurile neașteptate care fac conținutul autentic european.",
+    s5t:"CONȚINUT DE FASHION WEEK", s5p:"Conținut creat în jurul energiei Paris Fashion Week și Milano Fashion Week.",
+    s6t:"PRODUCȚIE COMPLETĂ", s6p:"Tu aduci hainele. Noi ne ocupăm de absolut tot restul.",
+    city_cta:"ALEGE ORAȘUL →",
+    fw_h2:"FASHION WEEK<br>NU E DOAR<br>UN SHOW.<br><span class=\"loc\">E O LOCAȚIE.</span>", fw_loc:"E O LOCAȚIE.",
+    fw_p:"În timpul fashion week-ului, străzile devin podiumuri. Creăm conținut în mijlocul acelei energii — unde brandul tău nu doar arată bine, ci arată că aparține acolo.",
+    work_h2:"LUCRĂRI ALESE",
+    pipe_h2:"DE LA HAINĂ<br>LA CAMPANIE.",
+    pp1:"HAINELE TALE", pp2:"CONCEPT", pp3:"ORAȘ", pp4:"SHOOTING", pp5:"EDITARE", pp6:"CONȚINUT",
+    pipe_note:"HAINELE SUNT SINGURUL LUCRU PE CARE ÎL ADUCI TU. RESTUL E TREABA NOASTRĂ.",
+    proc_h2:"CUM FUNCȚIONEAZĂ",
+    st1t:"TRIMIȚI HAINELE", st1p:"Ne expediezi piesele sau coordonăm împreună livrarea.",
+    st2t:"CONSTRUIM CONCEPTUL", st2p:"Studiem brandul, colecția, mood-ul și publicul tău.",
+    st3t:"LE DUCEM ÎN ORAȘ", st3p:"Paris, Milano sau altă locație aleasă împreună.",
+    st4t:"FILMĂM ȘI FOTOGRAFIEM", st4p:"Fotografie + Reels + conținut social-first.",
+    st5t:"PRIMEȘTI CONȚINUTUL", st5p:"Materiale editate, șlefuite, gata de publicat.",
+    bigline:"TU NU TREBUIE SĂ VII.<br><em>HAINELE TALE, DA.</em>",
+    man_you:"TU<br>TRIMIȚI<br>HAINELE.", man_we:"NOI FACEM<br>TOT<br>RESTUL.",
+    m1:"Concept", m2:"Direcție creativă", m3:"Scouting de locații", m4:"Producție", m5:"Fotografie", m6:"Video", m7:"Editare", m8:"Livrare",
+    soc_h2:"FĂCUT PENTRU FEED.<br>NU PENTRU ARHIVĂ.",
+    d1:"IMAGINI EDITORIALE HIGH-RES", d2:"VIDEO SCURT", d3:"MATERIALE GATA DE INSTAGRAM", d4t:"CAMPANIE", d4:"VIZUALURI DE CAMPANIE", d5t:"FLEXIBIL", d5:"LIVRABILE PERSONALIZATE",
+    deliv_note:"Livrabilele se adaptează colecției, campaniei și amplorii producției.",
+    who_h2:"PENTRU BRANDURI CARE VOR SĂ ARATE CĂ APARȚIN ACOLO.",
+    w1:"Branduri de fashion emergente", w2:"Designeri independenți", w3:"Labeluri de streetwear", w4:"Branduri premium de îmbrăcăminte", w5:"Startup-uri de lux", w6:"Branduri contemporane", w7:"Branduri de accesorii", w8:"Branduri de încălțăminte", w9:"Branduri de bijuterii",
+    ph1:"FASHIONUL E CONTEXT.", ph2:"O haină excepțională într-un studio alb rămâne doar o haină excepțională.",
+    ph3:"Dar pune-o la Paris. Pune-o pe fundalul arhitecturii milaneze. Pune-o în mișcare. Dă-i atmosferă. Dă-i o poveste.",
+    ph4:"ASTA CREĂM NOI.",
+    map_h2:"UNDE FILMĂM", active:"● ACTIV", soon:"LA CERERE",
+    faq_h2:"ÎNTREBĂRI",
+    q1:"Trebuie să călătorim cu voi?", a1:"Nu. Exact asta e ideea. Ne trimiteți hainele; noi ne ocupăm de producție.",
+    q2:"Filmați doar în timpul Fashion Week?", a2:"Nu. Fashion Week e un moment natural pentru genul de conținut pe care îl creăm, dar producem shootinguri pe tot parcursul anului.",
+    q3:"Puteți face și foto, și video?", a3:"Da. Construim producția în jurul fotografiei, al Reels-urilor sau al amândurora.",
+    q4:"Unde filmați?", a4:"În principal Paris și Milano, cu alte locații disponibile în funcție de proiect.",
+    q5:"Ce trebuie să oferim noi?", a5:"Hainele, direcția brandului și obiectivele campaniei. De producție ne ocupăm noi.",
+    q6:"Puteți crea conținut special pentru Instagram?", a6:"Da. Producția poate fi gândită în jurul videoului vertical, al fotografiei social-first, al Stories și al Reels-urilor.",
+    fin_h2:"GATA SĂ-ȚI SCOȚI<br>BRANDUL<br>DIN STUDIO?", wait1:"AȘTEAPTĂ.", wait2:"AȘTEAPTĂ.",
+    fin_cta1:"ÎNCEPE UN PROIECT →", fin_cta2:"SCRIE-NE PE INSTAGRAM →",
+    con_h2:"HAI SĂ FACEM CEVA<br>CE MERITĂ POSTAT.",
+    con_lead:"Fără formulare. Fără brief-uri de completat. Scrie-ne pe Instagram sau pe email — spune-ne brandul, orașul și ce vrei să filmăm.",
+    con_w1:"INSTAGRAM — ", con_fast:"CEL MAI RAPID", con_w2:"EMAIL",
+    con_note:"SPUNE-NE: BRAND · ORAȘ (PARIS / MILANO) · FOTO / VIDEO / AMBELE · TIMELINE",
+    f_name:"NUME", f_brand:"BRAND", f_email:"EMAIL", f_ig:"SITE / INSTAGRAM", f_based:"DE UNDE SUNTEȚI?", f_city:"PARIS / MILANO / ALTUL", f_other:"ALTUL", f_media:"FOTO / VIDEO / AMBELE", f_both:"AMBELE", f_time:"TIMELINE", f_msg:"MESAJ", f_send:"TRIMITE BRIEF-UL →",
+    pg_kick:"FOTOGRAFUL", pg_role:"FONDATOR / FOTOGRAF DE FASHION",
+    pg_bio:"Ochiul din spatele fiecărui cadru. Danil fotografiază street style și editoriale în plină energie a săptămânilor modei din Paris și Milano — de la mulțimea de la Schiaparelli până în backstage-ul podiumurilor din București. Fiecare producție e regizată și fotografiată de el, cap-coadă.",
+    pg_m1b:"FILMEAZĂ ÎN", pg_m2b:"FOCUS", pg_m2:"STREET STYLE\nEDITORIAL / PODIUM", pg_m3b:"SEZON",
+    pg_sig:"FIECARE CADRU DE PE ACEST SITE — FOTOGRAFIAT DE DANIL.",
+    every:"PESTE TOT"
+  };
+  var EN = {}; // capturat din DOM la init
+  document.querySelectorAll("[data-i18n]").forEach(function(el){ EN[el.getAttribute("data-i18n")] = el.textContent; });
+  document.querySelectorAll("[data-i18n-html]").forEach(function(el){ EN[el.getAttribute("data-i18n-html")] = el.innerHTML; });
+
+  function setLang(l){
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      var v = l === "ro" ? RO[k] : EN[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-html");
+      var v = l === "ro" ? RO[k] : EN[k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.getElementById("len").classList.toggle("on", l === "en");
+    document.getElementById("lro").classList.toggle("on", l === "ro");
+    try { localStorage.setItem("km-lang", l); } catch(e){}
+  }
+  document.getElementById("len").addEventListener("click", function(){ setLang("en"); });
+  document.getElementById("lro").addEventListener("click", function(){ setLang("ro"); });
+  var saved = "en";
+  try { saved = localStorage.getItem("km-lang") || "en"; } catch(e){}
+  if (saved === "ro") setLang("ro"); else document.documentElement.lang = "en";
+
+  // ── reveal on scroll ──
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  // ── hero parallax (subtil) ──
+  var hi = document.querySelector("#heroimg img");
+  var mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (hi && !mq.matches){
+    document.addEventListener("mousemove", function(ev){
+      var x = (ev.clientX / window.innerWidth - 0.5) * 10;
+      var y = (ev.clientY / window.innerHeight - 0.5) * 6;
+      hi.style.transform = "scale(1.06) translate(" + x + "px," + y + "px)";
+    });
+  }
+
+  // ── mobile menu ──
+  var mm = document.getElementById("mmenu");
+  document.getElementById("burger").addEventListener("click", function(){ mm.classList.toggle("open"); });
+  mm.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ mm.classList.remove("open"); }); });
+})();
+</script>

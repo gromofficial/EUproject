@@ -1,0 +1,163 @@
+<!doctype html><html lang="ro"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1000KM — PICTURE CONSOLE</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--paper:#F2F0EB;--ink:#0A0A0A;--red:#E1261C;--grey:#8A877F;--concrete:#C9C6BF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:12px;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;align-items:center;border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper)}
+header .logo{font-family:'Archivo Black';font-size:17px;padding:12px 18px;border-right:1px solid #333}
+header .logo span{color:var(--red)}
+header .t{padding:0 16px;letter-spacing:.18em}
+header a{margin-left:auto;color:var(--paper);text-decoration:none;padding:14px 18px;background:var(--red);letter-spacing:.1em}
+main{flex:1;display:grid;grid-template-columns:340px 1fr;min-height:0}
+/* slots */
+#slots{border-right:1px solid var(--ink);overflow-y:auto;background:#EAE7E0}
+#slots h2, #lib h2{font-family:'Archivo Black';font-size:13px;letter-spacing:.06em;padding:12px 14px;border-bottom:1px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:2}
+.slot{display:flex;gap:10px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--concrete);cursor:pointer}
+.slot img{width:52px;height:52px;object-fit:cover;background:#ccc;border:1px solid var(--ink)}
+.slot .nm{font-weight:500}
+.slot .dm{color:var(--grey);font-size:10px}
+.slot.sel{background:var(--ink);color:var(--paper)}
+.slot.sel .dm{color:#aaa}
+.slot.sel::after{content:"◀ ALEGE POZA";margin-left:auto;color:var(--red);font-size:9px;letter-spacing:.1em}
+/* library */
+#lib{display:flex;flex-direction:column;min-height:0}
+#tabs{display:flex;border-bottom:1px solid var(--ink);background:var(--paper);flex-wrap:wrap}
+#tabs button{border:none;border-right:1px solid var(--ink);background:none;padding:11px 16px;font-family:inherit;font-size:11px;letter-spacing:.12em;cursor:pointer;text-transform:uppercase}
+#tabs button.on{background:var(--ink);color:var(--paper)}
+#tabs button:disabled{color:#b5b2aa;cursor:not-allowed;text-decoration:line-through}
+#grid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--concrete);padding:1px}
+#grid .ph{position:relative;aspect-ratio:1;background:#ddd;cursor:pointer;overflow:hidden}
+#grid .ph img{width:100%;height:100%;object-fit:cover;display:block}
+#grid .ph:hover::after{content:"";position:absolute;inset:0;border:3px solid var(--red)}
+#grid .ph .fn{position:absolute;left:0;bottom:0;right:0;background:rgba(0,0,0,.72);color:#fff;font-size:9px;padding:3px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#status{border-top:1px solid var(--ink);padding:10px 14px;background:var(--paper);letter-spacing:.08em;min-height:38px}
+#status .ok{color:#1c7c1c}#status .err{color:var(--red)}
+#crumbs{display:none;border-bottom:1px solid var(--ink);padding:8px 12px;background:#EAE7E0;gap:4px;flex-wrap:wrap;align-items:center}
+#crumbs.show{display:flex}
+#crumbs button{border:1px solid var(--ink);background:var(--paper);font-family:inherit;font-size:10px;padding:4px 9px;cursor:pointer;letter-spacing:.06em}
+#crumbs button:hover{background:var(--ink);color:var(--paper)}
+#crumbs .sep{color:var(--grey)}
+#grid .dir{position:relative;aspect-ratio:1;background:var(--ink);color:var(--paper);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;border:1px solid #333}
+#grid .dir:hover{background:var(--red)}
+#grid .dir .ic{font-size:22px;position:absolute;top:8px;left:10px}
+#grid .dir .nm{font-size:10px;letter-spacing:.06em;word-break:break-word}
+.spin{display:inline-block;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+</style></head><body>
+<header>
+  <div class="logo">1000<span>KM</span></div>
+  <div class="t">PICTURE CONSOLE — LOCAL</div>
+  <a href="/index.html" target="_blank">VEZI SITE-UL ↗</a>
+</header>
+<main>
+  <div id="slots"><h2>SLOTURI SITE</h2></div>
+  <div id="lib">
+    <div id="tabs"></div>
+    <div id="crumbs"></div>
+    <div id="grid"></div>
+    <div id="status">Alege un slot din stânga, apoi click pe o poză. Se exportă + rebuild automat.</div>
+  </div>
+</main>
+<script>
+let SEL = null, SRC = null;
+const $ = s => document.querySelector(s);
+const status = (msg, cls) => { $("#status").innerHTML = cls ? `<span class="${cls}">${msg}</span>` : msg; };
+
+async function loadSlots(){
+  const slots = await (await fetch("/api/slots")).json();
+  const box = $("#slots");
+  box.querySelectorAll(".slot").forEach(e=>e.remove());
+  for (const s of slots){
+    const d = document.createElement("div");
+    d.className = "slot"; d.dataset.slot = s.slot;
+    d.innerHTML = `<img src="/thumb?src=__slot__&id=${s.slot}&v=${Date.now()}" loading="lazy">
+      <div><div class="nm">${s.label}</div><div class="dm">${s.slot} · max ${s.dim}px</div></div>`;
+    d.onclick = () => { document.querySelectorAll(".slot").forEach(e=>e.classList.remove("sel")); d.classList.add("sel"); SEL = s.slot; status(`Slot selectat: <b>${s.label}</b> — click pe o poză din dreapta.`); };
+    box.appendChild(d);
+  }
+}
+async function loadTabs(){
+  const av = await (await fetch("/api/sources")).json();
+  const tabs = $("#tabs");
+  const names = {__browse__:"📁 BROWSER SSD", paris:"PARIS (SSD)", milan:"MILAN (SSD)", schiaparelli:"SCHIAPARELLI", haine:"EDITORIALE HAINE", mbbfw:"MBBFW"};
+  for (const k of Object.keys(names)){
+    const b = document.createElement("button");
+    b.textContent = names[k];
+    if (k === "__browse__") b.onclick = () => { document.querySelectorAll("#tabs button").forEach(e=>e.classList.remove("on")); b.classList.add("on"); browse("/Volumes"); };
+    else if (!av[k]) { b.disabled = true; b.title = "sursa nu e montată"; }
+    else b.onclick = () => { document.querySelectorAll("#tabs button").forEach(e=>e.classList.remove("on")); b.classList.add("on"); $("#crumbs").classList.remove("show"); loadGrid(k); };
+    tabs.appendChild(b);
+  }
+  const first = Object.keys(names).find(k=>av[k]);
+  if (first) { tabs.children[Object.keys(names).indexOf(first)].classList.add("on"); loadGrid(first); }
+}
+async function loadGrid(src){
+  SRC = src;
+  const g = $("#grid");
+  g.innerHTML = "";
+  status(`Se încarcă <b>${src}</b>… <span class="spin">◐</span>`);
+  const files = await (await fetch("/api/list?src="+encodeURIComponent(src))).json();
+  if (files.error){ status(files.error, "err"); return; }
+  status(`${files.length} poze în ${src}.`);
+  for (const f of files){
+    const d = document.createElement("div");
+    d.className = "ph";
+    d.innerHTML = `<img loading="lazy" src="/thumb?src=${encodeURIComponent(src)}&id=${encodeURIComponent(f)}"><div class="fn">${f.split("/").pop()}</div>`;
+    d.onclick = () => assign(src, f, d);
+    g.appendChild(d);
+  }
+}
+async function browse(path){
+  const g = $("#grid");
+  g.innerHTML = "";
+  status(`Se deschide <b>${path}</b>… <span class="spin">◐</span>`);
+  const r = await (await fetch("/api/browse?path="+encodeURIComponent(path))).json();
+  if (r.error){ status(r.error, "err"); return; }
+  // breadcrumbs
+  const cb = $("#crumbs");
+  cb.classList.add("show");
+  cb.innerHTML = "";
+  const parts = r.path.split("/").filter(Boolean);
+  let acc = "";
+  const rootBtn = document.createElement("button");
+  rootBtn.textContent = "/"; rootBtn.onclick = () => browse("/Volumes");
+  cb.appendChild(rootBtn);
+  for (const p of parts){
+    acc += "/" + p;
+    const sep = document.createElement("span"); sep.className = "sep"; sep.textContent = "›"; cb.appendChild(sep);
+    const b = document.createElement("button"); b.textContent = p; const target = acc;
+    b.onclick = () => browse(target); cb.appendChild(b);
+  }
+  // foldere
+  for (const d of r.dirs){
+    const el = document.createElement("div");
+    el.className = "dir";
+    el.innerHTML = `<div class="ic">▸</div><div class="nm">${d}</div>`;
+    el.onclick = () => browse(r.path + "/" + d);
+    g.appendChild(el);
+  }
+  // imagini
+  for (const f of r.images){
+    const full = r.path + "/" + f;
+    const el = document.createElement("div");
+    el.className = "ph";
+    el.innerHTML = `<img loading="lazy" src="/thumb?src=__path__&id=${encodeURIComponent(full)}"><div class="fn">${f}</div>`;
+    el.onclick = () => assign("__path__", full, el);
+    g.appendChild(el);
+  }
+  status(`${r.dirs.length} foldere · ${r.images.length} poze — ${r.path}`);
+}
+async function assign(src, id, el){
+  if (!SEL){ status("Alege întâi un SLOT din stânga.", "err"); return; }
+  status(`Export + rebuild pentru <b>${SEL}</b>… <span class="spin">◐</span>`);
+  const r = await (await fetch("/api/assign", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({slot: SEL, src, id})})).json();
+  if (r.error){ status("EROARE: "+r.error, "err"); return; }
+  status(`✓ <b>${SEL}</b> actualizat (${r.size}KB) + site rebuilt. Dă refresh la site ca să vezi.`, "ok");
+  const im = document.querySelector(`.slot[data-slot="${SEL}"] img`);
+  if (im) im.src = `/thumb?src=__slot__&id=${SEL}&v=${Date.now()}`;
+}
+loadSlots(); loadTabs();
+</script>
+</body></html>
